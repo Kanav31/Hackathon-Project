@@ -13,6 +13,10 @@ import torch
 from torchvision import transforms
 from PIL import Image
 from utils.model import ResNet9
+import tensorflow as tf
+import keras
+from sklearn.preprocessing import MinMaxScaler
+
 # ==============================================================================================
 
 # -------------------------LOADING THE TRAINED MODELS -----------------------------------------------
@@ -71,7 +75,7 @@ crop_recommendation_model_path = 'models/RandomForest.pkl'
 crop_recommendation_model = pickle.load(
     open(crop_recommendation_model_path, 'rb'))
 
-
+model = keras.models.load_model("models/water_leakage_detection_model.keras")
 # =========================================================================================
 
 # Custom functions for calculations
@@ -153,10 +157,19 @@ def fertilizer_recommendation():
 
     return render_template('fertilizer.html', title=title)
 
+@ app.route('/disease_predict')
+def disease():
+    title = 'Harvestify - Disease Prediction'
+
+    return render_template('disease.html', title=title)
+
+@ app.route('/water-leakage-detection')
+def leak_detect():
+    title = 'SmartFarm - Water Leakage detection'
+
+    return render_template('water-leakage-detection.html', title=title)
+
 # render disease prediction input page
-
-
-
 
 # ===============================================================================================
 
@@ -238,7 +251,7 @@ def fert_recommend():
 # render disease prediction result page
 
 
-@app.route('/disease-predict', methods=['GET', 'POST'])
+@app.route('/disease-prediction', methods=['GET', 'POST'])
 def disease_prediction():
     title = 'Smart Farm - Disease Detection'
 
@@ -259,6 +272,39 @@ def disease_prediction():
             pass
     return render_template('disease.html', title=title)
 
+@app.route('/water-leakage-prediction',methods=['POST'])
+def detect_leakage():
+    title = 'Drip Irrigation System - Water Leakage Detection'
+    
+    if request.method == 'POST':
+        final_prediction=[]
+        array_values = request.form.getlist("pressure[]")
+        data=[[]]
+        for i in array_values:
+            data[0].append(float(i))
+        answer=""
+        data=np.array(data)
+        prediction = model.predict(data)
+        count=0
+        for i in prediction[0]:
+            count+=1
+            if(i<0.09):
+                i=0
+            else:
+                final_prediction.append(count)
+                i=round(i,7)
+                print(i)
+                print(count)
+        size=len(final_prediction)
+        if(size==0):
+            answer= "Congratulations, there is no leak suspected in your system ."
+        else:
+            answer= "There is Leak Suspected in Following Pipes : \n"
+            for i in final_prediction:
+                answer=answer+str(i)+"\n"
+        return render_template('water-leakage-prediction.html', prediction=answer, title=title)
+    else:
+        return render_template('try_again.html', title=title)
 
 # ===============================================================================================
 if __name__ == '__main__':

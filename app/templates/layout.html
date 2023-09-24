@@ -162,34 +162,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg static-top mynav">
+	<nav class="navbar navbar-expand-lg static-top mynav navbar-fixed-top" style="background: #334B35">
 		<div class="container">
 			<a class="navbar-brand" href="{{ url_for('home') }}">
-				<img src="{{ url_for('static', filename='images/logo1.png') }}" style="width: 10%; height: 10%" alt="Smart Farm">
+				<img src="{{ url_for('static', filename='images/logo1.png') }}" style="width: 20%; height: 20%" alt="Smart Farm">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
+				<ul class="navbar-nav ml-auto" >
 					<li class="nav-item active">
-						<a class="nav-link mylinks" href="{{ url_for('home') }}">Home
+						<a style="color:#CDC50A;"class="nav-link mylinks" href="{{ url_for('home') }}">Home
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link mylinks" href="{{ url_for('crop_recommend') }}">Crop</a>
+						<a style="color:#CDC50A" class="nav-link mylinks" href="{{ url_for('crop_recommend') }}">Crop</a>
+						<span class="sr-only">(current)</span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link mylinks" href="{{ url_for('fertilizer_recommendation') }}">Fertilizer</a>
+						<a style="color:#CDC50A" class="nav-link mylinks" href="{{ url_for('fertilizer_recommendation') }}">Fertilizer</a>
+						<span class="sr-only">(current)</span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link mylinks" href="{{ url_for('disease_prediction') }}">Disease</a>
+						<a style="color:#CDC50A;" class="nav-link mylinks" href="{{ url_for('disease') }}">Disease</a>
+						<span class="sr-only">(current)</span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ url_for('water-leakage-detection') }}">Drip Irrigation Monitoring</a>
+						<a style="color:#CDC50A" class="nav-link mylinks" href="{{ url_for('leak_detect') }}">Leak_Monitoring</a>
+						<span class="sr-only">(current)</span>
 					</li>
+					
 				</ul>
 			</div>
 		</div>
@@ -204,13 +209,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<footer class="text-center py-2 footerd">
 		<div class="container py-md-3">
 			<!-- logo -->
-			<h2 class="logo2 text-center">
-				<a href="{{ url_for('home') }}">
-					Smart Farm
-				</a>
-			</h2>
-			<p>Made with 💛 by Cookie Session</p>
-			<p>&copy; Copyright 2023 Cookie Session</p>
+				<p>Made with 💛 by Cookie Session</p>
+				<div>
+					<h2 class="logo2 text-center">
+						<a href="{{ url_for('home') }}">
+							SMART FARM
+						</a>
+					</h2>
+				</div>
+				<p>&copy; Copyright 2023 Cookie Session</p>
+			
+			
 
 		</div>
 	</footer>

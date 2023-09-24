@@ -1,8 +1,8 @@
 .mynav{
-	background-color:#947400;
+	background-color:#eee;
 }
 .mylinks{
-	color:white;
+	color:rgb(0, 0, 0);
 }
   .right{
 	position: absolute;
@@ -10,19 +10,20 @@
     bottom: 10%
   }
   .realheroes{
-	background-color:#6D8C54;
+
+	background-color:#486A47;
 
   }
   .heading{
 	color:white;
   }
   .ah{
-	color: wheat;
+	color:#CDC50A;
 	font-weight: bold;
   }
   .ap
   {
-	color: white;
+	color: #CDC50A;
 	font-size: 19px;
   }
   .whatwedo{
@@ -43,7 +44,7 @@
 	background-color:#334B35;
 }
 .services{
-	background-color:#6D8C54;
+	background-color:#486A47;
     height: 500px;
 }
 .services h3{
@@ -65,6 +66,7 @@
 }
 .container {
     width: 1000px;
+	
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -73,6 +75,8 @@
 .container .explore-card {
     position: relative;
     border-radius: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .container .explore-card .icon {
@@ -639,11 +643,11 @@ li > a:only-child:after { content: ''; }
 
 .w3layouts-banner-info {
     padding-top: 16em;
-	margin-left: 110px;
+	
 }
 
 .w3layouts-banner-info h3 {
-    font-size: 4em;
+    font-size: 6em;
     text-shadow: 3px 4px 6px rgba(45, 45, 45, 0.15);
     font-weight: 600;
     color: #fff;
